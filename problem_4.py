@@ -19,15 +19,23 @@ class Group(object):
     def get_name(self):
         return self.name
 
-    def is_user_in_group(user, group):
-    """
-    Return True if user is in the group, False otherwise.
+def is_user_in_group(user, group):
+"""
+Return True if user is in the group, False otherwise.
 
-    Args:
-      user(str): user name/id
-      group(class:Group): group to check user membership against
-    """
-    return None
+Args:
+    user(str): user name/id
+    group(class:Group): group to check user membership against
+"""
+    if user == group.get_name():
+        return True
+    elif user in group.get_groups():
+        return True
+
+    for grou in group.get_groups():
+        return is_user_in_group(user, grou)
+    
+    return False 
 
 
 parent = Group("parent")
@@ -39,3 +47,8 @@ sub_child.add_user(sub_child_user)
 
 child.add_group(sub_child)
 parent.add_group(child)
+
+
+print(is_user_in_group("child", child)) #True
+print(is_user_in_group("", child))  #False
+print(is_user_in_group("sub_child_user", parent))   #True
