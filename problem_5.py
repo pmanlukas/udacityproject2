@@ -1,16 +1,26 @@
 import hashlib
+import datetime
+
 
 class Block:
 
     def __init__(self, timestamp, data, previous_hash):
-      self.timestamp = timestamp
-      self.data = data
-      self.previous_hash = previous_hash
-      self.hash = self.calc_hash()
+        self.timestamp = timestamp
+        self.data = data
+        self.previous_hash = previous_hash
+        self.hash = self.calc_hash(data)
 
-class LinkedList:
+    def calc_hash(self, data):
+        sha = hashlib.sha256()
+        hash_str = data.encode('utf-8')
+        sha.update(hash_str)
+        return sha.hexdigest()
+
+
+class BlockChain:
     def __init__(self):
         self.head = None
+        self.last = None
 
     def __str__(self):
         cur_head = self.head
@@ -20,34 +30,33 @@ class LinkedList:
             cur_head = cur_head.next
         return out_string
 
-
-    def append(self, value):
+    def append(self, timestamp, data):
 
         if self.head is None:
-            self.head = Node(value)
+            self.head = Block(timestamp, data, 0)
+            self.last = self.head
+            return
+        else:
+            current = self.last
+            self.last = Block(timestamp, data, current)
+            self.last.previous_hash = current
             return
 
-        node = self.head
-        while node.next:
-            node = node.next
+def get_utc():
+    utc = datetime.datetime.utcnow()
+    return utc.strftime("%d/%m/%Y %H:%M:%S")
 
-        node.next = Node(value)
+block0 = Block(get_utc(), "Some Information", 0)
+block1 = Block(get_utc(), "Another Information", block0)
+block2 = Block(get_utc(), "Some more Information", block1)
 
-    def size(self):
-        size = 0
-        node = self.head
-        while node:
-            size += 1
-            node = node.next
+print(block0.data)
+print(block0.hash)
+print(block0.timestamp)
+print(block1.previous_hash.data)
 
-        return size
-
-def calc_hash(self):
-      sha = hashlib.sha256()
-
-      hash_str = "We are going to encode this string of data!".encode('utf-8')
-
-      sha.update(hash_str)
-
-      return sha.hexdigest()
-
+temp = BlockChain()
+temp.append(get_utc(), "Some Information")
+temp.append(get_utc(), "Another Information")
+print(temp.last.data)
+print(temp.last.previous_hash.data)
