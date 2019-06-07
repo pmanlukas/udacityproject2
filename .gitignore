@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+p2.zip
