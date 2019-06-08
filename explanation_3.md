@@ -8,5 +8,6 @@ I have implemented huffman encoding technique here with following steps:
 
 ## On my runtime
 
-Time complexity: O(n) Space complexity: O(distinct_characters)
+Time complexity: O(n log(n)) Space complexity: O(distinct_characters)
 
+- in time complexity we also need to factor in the sorted function with O(m log(m))
