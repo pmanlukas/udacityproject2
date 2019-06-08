@@ -30,6 +30,9 @@ our_cache = LRU_Cache(5)
 
 our_cache.set(1, 1)
 our_cache.set(2, 2)
+our_cache.set(-1,-2)
+
 print(our_cache.get(1))       # returns 1
 print(our_cache.get(2))       # returns 2
 print(our_cache.get(3))       # return -1
+print(our_cache.get(-1))       # return -2
