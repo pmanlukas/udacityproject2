@@ -42,10 +42,13 @@ class BlockChain:
             self.last.previous_hash = current
             return
 
+
 def get_utc():
     utc = datetime.datetime.utcnow()
     return utc.strftime("%d/%m/%Y %H:%M:%S")
 
+
+# Case 1
 block0 = Block(get_utc(), "Some Information", 0)
 block1 = Block(get_utc(), "Another Information", block0)
 block2 = Block(get_utc(), "Some more Information", block1)
@@ -55,8 +58,13 @@ print(block0.hash)
 print(block0.timestamp)
 print(block1.previous_hash.data)
 
+# Case 2
+testchain = BlockChain()
+testchain.append(get_utc(), "Some Information")
+testchain.append(get_utc(), "Another Information")
+print(testchain.last.hash == testchain.last.previous_hash) # False
+
+
+# Case 3
 temp = BlockChain()
-temp.append(get_utc(), "Some Information")
-temp.append(get_utc(), "Another Information")
-print(temp.last.data)
-print(temp.last.previous_hash.data)
+print(temp) # empty
