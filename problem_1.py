@@ -26,13 +26,20 @@ class LRU_Cache(object):
         self.cache[key] = value
 
 
-our_cache = LRU_Cache(5)
+# Case 1
+test1 = LRU_Cache(5)
 
-our_cache.set(1, 1)
-our_cache.set(2, 2)
-our_cache.set(-1,-2)
+test1.set(1, 1)
 
-print(our_cache.get(1))       # returns 1
-print(our_cache.get(2))       # returns 2
-print(our_cache.get(3))       # return -1
-print(our_cache.get(-1))       # return -2
+print(test1.get(1))       # returns 1
+print(test1.get(3))       # return -1
+
+# Case 2
+test2 = LRU_Cache(5)
+test2.set(1)
+print(test2.get(1)) # TypeError
+
+# Case 3
+test3 = LRU_Cache(5)
+test3.set(1, 1)
+print(test3.get()) # TypeError:
