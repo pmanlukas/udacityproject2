@@ -6,5 +6,5 @@ I have written a recursive function for this question which takes input the suff
 
 Run time complexity: O(depth X Avg. number of directoryin each level)
 
-Space complexity: O(depth)
+Space complexity: O(n) due to recursion
 
