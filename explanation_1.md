@@ -4,7 +4,7 @@ As I have to design a data structure for a Least Recently Used (LRU) cache with 
 
 ## On my runtime 
 
-Get Time complexity: O(1) Set Time complexity: O(1)
+Get Time complexity: O(1) Set Time complexity: O(1) because of the used sorted dict data structure
 
-Space complexity of the LRU: O(capacity)
+Space complexity of the LRU: O(capacity) given by the way we setup the used ordeddict with a check for a defined capacity
 

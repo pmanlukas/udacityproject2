@@ -10,4 +10,4 @@ I have implemented huffman encoding technique here with following steps:
 
 Time complexity: O(n log(n)) Space complexity: O(distinct_characters)
 
-- in time complexity we also need to factor in the sorted function with O(m log(m))
+- in time complexity we also need to factor in the sorted function with O(m log(m)) that is used the huffmann encoding file within a loop
