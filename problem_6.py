@@ -143,7 +143,7 @@ for i in element_5:
 for i in element_6:
     linked_list_8.append(i)
 
-print("Case 1")
+print("Case 3")
 print("Union")
 print(union(linked_list_7, linked_list_8)) # empty
 print("Intersection")
