@@ -31,4 +31,4 @@ def find_files(suffix, path):
 # add more
 print(find_files('.', 'testdir'))
 print(find_files('.', ''))
-#print(find_files('.', 'testdir/subdir3'))
+print(find_files('.', 'testdir/subdir3'))
