@@ -18,10 +18,8 @@ def find_files(suffix, path, files=[]):
         temp = suffix + '/' + path
     for f in os.listdir(temp):
         temp1 = temp + '/' + f
-        # print(f)
         if os.path.isfile(temp1) and temp1.endswith(".c"):
             files.append(temp1)
-            # print(temp1)
 
         elif os.path.isdir(temp1):
             files = find_files(temp, f, files)
