@@ -6,5 +6,5 @@ I have written a recursive function for this question which takes input the suff
 
 Run time complexity: O(depth X Avg. number of directoryin each level)
 
-Space complexity: O(n) due to recursion
+Space complexity: It will be O(nm) due to the structure of the folders, where n is the number of folders and m the number of sub folders etc (a hierachical file system can be nested on several levels)
 
