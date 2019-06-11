@@ -11,7 +11,7 @@ class LRU_Cache(object):
         # Retrieve item from provided key. Return -1 if nonexistent.
         try:
             if key == None:
-                return "Key can't be empty"
+                return "No key passed for .get()"
             value = self.cache.pop(key)
             self.cache[key] = value
             return value
@@ -20,17 +20,16 @@ class LRU_Cache(object):
 
     def set(self, key, value=None):
         # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item.
-        if value is None:
-            print("Value can't be empty")
-            return
-        else:
-            try:
-                
-                self.cache.pop(key)
-            except KeyError:
-                if len(self.cache) >= self.capacity:
-                    self.cache.popitem(last=False)
-            self.cache[key] = value
+
+        try:
+            if value is None:
+                print("No value passed for .set()")
+                return
+            self.cache.pop(key)
+        except KeyError:
+            if len(self.cache) >= self.capacity:
+                self.cache.popitem(last=False)
+        self.cache[key] = value
 
 
 # Case 1
@@ -44,9 +43,9 @@ print(test1.get(3))       # return -1
 # Case 2
 test2 = LRU_Cache(5)
 test2.set(1)
-print(test2.get(1)) # TypeError
+print(test2.get(1))  # TypeError
 
 # Case 3
 test3 = LRU_Cache(5)
 test3.set(1, 1)
-print(test3.get()) # TypeError:
+print(test3.get())  # TypeError:
