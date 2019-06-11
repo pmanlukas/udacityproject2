@@ -23,6 +23,8 @@ class BlockChain:
         self.last = None
 
     def __str__(self):
+        if self.head is None:
+            return "Blockchain is empty!"
         cur_head = self.head
         out_string = ""
         while cur_head:
